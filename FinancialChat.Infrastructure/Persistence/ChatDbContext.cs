@@ -5,8 +5,7 @@ namespace FinancialChat.Infrastructure.Persistence;
 
 public class ChatDbContext : DbContext {
     public ChatDbContext(DbContextOptions<ChatDbContext> options)
-    : base(options) {
-    }
+        : base(options) { }
 
     public DbSet<ChatMessage> ChatMessages => Set<ChatMessage>();
     public DbSet<ChatRoom> ChatRooms => Set<ChatRoom>();
