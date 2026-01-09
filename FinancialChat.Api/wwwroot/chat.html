@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Financial Chat</title>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+</head>
+<body>
+    <h2>Financial Chat</h2>
+
+    <input id="user" placeholder="User" />
+    <input id="message" placeholder="Message" />
+    <button onclick="send()">Send</button>
+
+    <ul id="messages"></ul>
+
+    <script>
+    const connection = new signalR.HubConnectionBuilder()
+      .withUrl("/chat")
+      .build();
+
+    connection.on("ReceiveMessage", (user, message) => {
+      const li = document.createElement("li");
+      li.textContent = `${user}: ${message}`;
+      document.getElementById("messages").appendChild(li);
+    });
+
+    connection.start();
+
+    function send() {
+      const user = document.getElementById("user").value;
+      const message = document.getElementById("message").value;
+      connection.invoke("SendMessage", "00000000-0000-0000-0000-000000000001", user, message);
+    }
+    </script>
+</body>
+</html>

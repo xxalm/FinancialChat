@@ -3,7 +3,7 @@ using FinancialChat.Domain.Entities;
 
 namespace FinancialChat.Application.Services;
 
-public class ChatService {
+public class ChatService : IChatService {
     private readonly IChatMessageRepository _repository;
     private readonly IChatNotifier _notifier;
 
