@@ -6,6 +6,7 @@ using FinancialChat.Infrastructure.Persistence;
 using FinancialChat.Api.Hubs;
 using FinancialChat.Api.Notifiers;
 using FinancialChat.Infrastructure.Messaging;
+using FinancialChat.Infrastructure.Clients;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +31,8 @@ builder.Services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
 builder.Services.AddScoped<IChatNotifier, SignalRChatNotifier>();
 builder.Services.AddScoped<IStockCommandPublisher, InMemoryStockCommandPublisher>();
 builder.Services.AddScoped<IStockCommandConsumer, StockBotService>();
-builder.Services.AddScoped<IStockCommandPublisher, InMemoryStockCommandPublisher>();    
+builder.Services.AddScoped<IStockCommandPublisher, InMemoryStockCommandPublisher>();
+builder.Services.AddHttpClient<IStockQuoteClient, StooqStockQuoteClient>();
 
 builder.Services.AddSignalR();
 
