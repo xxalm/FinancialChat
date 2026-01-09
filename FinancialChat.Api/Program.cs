@@ -29,6 +29,8 @@ builder.Services.AddScoped<IChatService, ChatService>();
 builder.Services.AddScoped<IChatMessageRepository, ChatMessageRepository>();
 builder.Services.AddScoped<IChatNotifier, SignalRChatNotifier>();
 builder.Services.AddScoped<IStockCommandPublisher, InMemoryStockCommandPublisher>();
+builder.Services.AddScoped<IStockCommandConsumer, StockBotService>();
+builder.Services.AddScoped<IStockCommandPublisher, InMemoryStockCommandPublisher>();    
 
 builder.Services.AddSignalR();
 
