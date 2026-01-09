@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.Api", "FinancialChat.Api\FinancialChat.Api.csproj", "{2F39321C-D7A2-40F0-8125-CF20A7D9381A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.Application", "FinancialChat.Application\FinancialChat.Application.csproj", "{B3AE928D-CF73-4FF2-BFAE-F7199470DAE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.Domain", "FinancialChat.Domain\FinancialChat.Domain.csproj", "{AC39E88A-A356-49B3-8F20-2E9E4885CBCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.Infrastructure", "FinancialChat.Infrastructure\FinancialChat.Infrastructure.csproj", "{AD4304B2-F369-4926-9717-FCCE87724B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.StockBot", "FinancialChat.StockBot\FinancialChat.StockBot.csproj", "{517C2E3F-C501-4010-822A-1D0827568922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialChat.Tests", "FinancialChat.Tests\FinancialChat.Tests.csproj", "{87BC396F-992F-446A-856E-F333EB8F354D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F39321C-D7A2-40F0-8125-CF20A7D9381A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F39321C-D7A2-40F0-8125-CF20A7D9381A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F39321C-D7A2-40F0-8125-CF20A7D9381A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F39321C-D7A2-40F0-8125-CF20A7D9381A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AE928D-CF73-4FF2-BFAE-F7199470DAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AE928D-CF73-4FF2-BFAE-F7199470DAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AE928D-CF73-4FF2-BFAE-F7199470DAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AE928D-CF73-4FF2-BFAE-F7199470DAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC39E88A-A356-49B3-8F20-2E9E4885CBCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC39E88A-A356-49B3-8F20-2E9E4885CBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC39E88A-A356-49B3-8F20-2E9E4885CBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC39E88A-A356-49B3-8F20-2E9E4885CBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4304B2-F369-4926-9717-FCCE87724B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4304B2-F369-4926-9717-FCCE87724B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4304B2-F369-4926-9717-FCCE87724B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4304B2-F369-4926-9717-FCCE87724B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517C2E3F-C501-4010-822A-1D0827568922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517C2E3F-C501-4010-822A-1D0827568922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517C2E3F-C501-4010-822A-1D0827568922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517C2E3F-C501-4010-822A-1D0827568922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BC396F-992F-446A-856E-F333EB8F354D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BC396F-992F-446A-856E-F333EB8F354D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BC396F-992F-446A-856E-F333EB8F354D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BC396F-992F-446A-856E-F333EB8F354D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
