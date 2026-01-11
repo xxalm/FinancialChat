@@ -8,25 +8,24 @@ namespace FinancialChat.Domain.Entities;
 
 public class ChatMessage {
     public Guid Id { get; private set; } = Guid.NewGuid();
+
     public Guid ChatRoomId { get; private set; }
-    public string UserName { get; private set; } = null!;
+    public ChatRoom ChatRoom { get; private set; } = null!;
+    public string UserId { get; private set; } = null!;
+
     public string Content { get; private set; } = null!;
     public DateTime CreatedAt { get; private set; }
     public bool IsFromBot { get; private set; }
 
     protected ChatMessage() { }
 
-    public ChatMessage(
-        Guid chatRoomId,
-        string userName,
-        string content,
-        bool isFromBot = false) {
+    public ChatMessage(Guid chatRoomId, string userId, string content, bool isFromBot = false) 
+    {
         ChatRoomId = chatRoomId;
-        UserName = userName;
+        UserId = userId;
         Content = content;
         IsFromBot = isFromBot;
         CreatedAt = DateTime.UtcNow;
     }
+
 }
-
-

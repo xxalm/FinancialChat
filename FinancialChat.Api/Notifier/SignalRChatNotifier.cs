@@ -12,12 +12,18 @@ public class SignalRChatNotifier : IChatNotifier {
         _hubContext = hubContext;
     }
 
-    public async Task NotifyMessageAsync(ChatMessage message, CancellationToken cancellationToken) 
-    {
+    public async Task NotifyMessageAsync(
+        ChatMessage message,
+        CancellationToken cancellationToken) {
         await _hubContext.Clients.All.SendAsync(
             "ReceiveMessage",
-            message.UserName,
-            message.Content,
-            cancellationToken);
+            new {
+                userId = message.IsFromBot ? "BOT" : message.UserId,
+                content = message.Content,
+                createdAt = message.CreatedAt,
+                isFromBot = message.IsFromBot
+            },
+            cancellationToken
+        );
     }
 }

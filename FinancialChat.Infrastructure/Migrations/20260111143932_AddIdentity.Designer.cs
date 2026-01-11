@@ -4,6 +4,7 @@ using FinancialChat.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinancialChat.Infrastructure.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    partial class ChatDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260111143932_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +34,6 @@ namespace FinancialChat.Infrastructure.Migrations
                     b.Property<Guid>("ChatRoomId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ChatRoomId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(1000)
@@ -45,15 +45,14 @@ namespace FinancialChat.Infrastructure.Migrations
                     b.Property<bool>("IsFromBot")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ChatRoomId");
-
-                    b.HasIndex("ChatRoomId1");
 
                     b.ToTable("ChatMessages");
                 });
@@ -275,14 +274,10 @@ namespace FinancialChat.Infrastructure.Migrations
             modelBuilder.Entity("FinancialChat.Domain.Entities.ChatMessage", b =>
                 {
                     b.HasOne("FinancialChat.Domain.Entities.ChatRoom", "ChatRoom")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("ChatRoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("FinancialChat.Domain.Entities.ChatRoom", null)
-                        .WithMany("Messages")
-                        .HasForeignKey("ChatRoomId1");
 
                     b.Navigation("ChatRoom");
                 });
