@@ -4,8 +4,7 @@ using System.Globalization;
 
 namespace FinancialChat.Application.Services;
 
-public class StockBotService : IStockCommandConsumer 
-{
+public class StockBotService : IStockBotService {
     private readonly IChatNotifier _notifier;
     private readonly IStockQuoteClient _stockClient;
 
