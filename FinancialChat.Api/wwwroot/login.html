@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login - Financial Chat</title>
+</head>
+<body>
+    <h2>Login</h2>
+
+    <input id="user" placeholder="Username" />
+    <input id="password" type="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+
+    <script>
+        async function login() {
+            const userName = document.getElementById("user").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!userName || !password) {
+                alert("Username and password are required");
+                return;
+            }
+
+            try {
+                const response = await fetch("/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ userName, password })
+                });
+
+                if (!response.ok) {
+                    alert("Invalid credentials");
+                    return;
+                }
+
+                const data = await response.json();
+
+                // limpa qualquer token antigo
+                localStorage.removeItem("accessToken");
+                localStorage.setItem("accessToken", data.accessToken);
+
+                window.location.href = "/index.html";
+            } catch (err) {
+                console.error(err);
+                alert("Unable to login. Try again.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 ﻿using FinancialChat.Api.Contracts.Auth;
 using FinancialChat.Infrastructure.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,7 @@ public class AuthController : ControllerBase {
     }
 
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<ActionResult<AuthResponse>> Login(LoginRequest request) {
         var user = await _userManager.FindByNameAsync(request.UserName);
 
@@ -75,9 +77,10 @@ public class AuthController : ControllerBase {
 
         var claims = new[]
         {
-        new Claim(JwtRegisteredClaimNames.Sub, user.Id),
-        new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName!)
-    };
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Name, user.UserName!)
+        };
+
 
         var token = new JwtSecurityToken(
             issuer: issuer,
