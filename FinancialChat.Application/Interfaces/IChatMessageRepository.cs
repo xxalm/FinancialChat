@@ -1,12 +1,11 @@
 ﻿using FinancialChat.Domain.Entities;
 
-namespace FinancialChat.Application.Interfaces;
-
-public interface IChatMessageRepository {
-    Task AddAsync(ChatMessage message, CancellationToken cancellationToken = default);
-
+public interface IChatMessageRepository 
+{
     Task<IReadOnlyList<ChatMessage>> GetLastMessagesAsync(
         Guid chatRoomId,
-        int limit = 50,
-        CancellationToken cancellationToken = default);
+        int limit,
+        CancellationToken cancellationToken);
+
+    Task AddAsync(ChatMessage message, CancellationToken cancellationToken);
 }

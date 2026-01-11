@@ -2,11 +2,8 @@
 
 namespace FinancialChat.Application.Interfaces;
 
-public interface IChatService {
-    Task SendMessageAsync(
-        Guid chatRoomId,
-        string userName,
-        string content,
-        bool isFromBot = false,
-        CancellationToken cancellationToken = default);
+public interface IChatService 
+{
+    Task<IReadOnlyList<ChatMessage>> GetLastMessagesAsync(Guid chatRoomId, CancellationToken cancellationToken = default);
+    Task SendMessageAsync(Guid chatRoomId, string userId, string content, CancellationToken cancellationToken = default);
 }

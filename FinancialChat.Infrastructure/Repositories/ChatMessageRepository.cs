@@ -19,10 +19,8 @@ public class ChatMessageRepository : IChatMessageRepository {
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IReadOnlyList<ChatMessage>> GetLastMessagesAsync(
-        Guid chatRoomId,
-        int limit = 50,
-        CancellationToken cancellationToken = default) {
+    public async Task<IReadOnlyList<ChatMessage>> GetLastMessagesAsync(Guid chatRoomId, int limit, CancellationToken cancellationToken) 
+    {
         return await _context.ChatMessages
             .Where(x => x.ChatRoomId == chatRoomId)
             .OrderByDescending(x => x.CreatedAt)
