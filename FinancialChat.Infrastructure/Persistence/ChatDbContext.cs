@@ -16,11 +16,12 @@ public class ChatDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<ChatMessage>(entity => {
+        modelBuilder.Entity<ChatMessage>(entity =>
+        {
             entity.HasKey(x => x.Id);
 
             entity.HasOne(x => x.ChatRoom)
-                .WithMany()
+                .WithMany(cr => cr.Messages)
                 .HasForeignKey(x => x.ChatRoomId);
 
             entity.Property(x => x.Content)
@@ -31,12 +32,19 @@ public class ChatDbContext
                 .IsRequired();
         });
 
-        modelBuilder.Entity<ChatRoom>(entity => {
+        modelBuilder.Entity<ChatRoom>(entity =>
+        {
             entity.HasKey(x => x.Id);
 
             entity.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);
         });
+
+        var defaultRoomId = Guid.Parse("00000000-0000-0000-0000-000000000001");
+
+        modelBuilder.Entity<ChatRoom>().HasData(
+            new ChatRoom(defaultRoomId, "General")
+        );
     }
 }

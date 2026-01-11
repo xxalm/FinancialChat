@@ -10,10 +10,10 @@ public class ChatMessage {
     public Guid Id { get; private set; } = Guid.NewGuid();
 
     public Guid ChatRoomId { get; private set; }
-    public ChatRoom ChatRoom { get; private set; } = null!;
-    public string UserId { get; private set; } = null!;
+    public ChatRoom ChatRoom { get; private set; } = default!;
+    public string UserId { get; private set; } = default!;
 
-    public string Content { get; private set; } = null!;
+    public string Content { get; private set; } = default!;
     public DateTime CreatedAt { get; private set; }
     public bool IsFromBot { get; private set; }
 
